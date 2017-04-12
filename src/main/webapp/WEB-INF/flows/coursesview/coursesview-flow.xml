@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<view-state id="coursesview1" view="coursesview1.xhtml">
+	   <on-render>
+	          <evaluate expression="coursesService.loadFirstFCourses()" result="flowScope.firstfcourses" result-type="dataModel"/>
+	          <evaluate expression="coursesService.loadFirstSCourses()" result="flowScope.firstscourses" result-type="dataModel"/>
+	          <evaluate expression="coursesService.loadSecondFCourses()" result="flowScope.secondfcourses" result-type="dataModel"/>
+	          <evaluate expression="coursesService.loadSecondSCourses()" result="flowScope.secondscourses" result-type="dataModel"/>
+	      </on-render>
+	      <transition on="tothirdfourth" to="coursesview2"/>
+	</view-state>
+	
+	<view-state id="coursesview2" view="coursesview2.xhtml">
+	     <on-render>
+	          <evaluate expression="coursesService.loadThirdFCourses()" result="flowScope.thirdfcourses" result-type="dataModel"/>
+	          <evaluate expression="coursesService.loadThirdSCourses()" result="flowScope.thirdscourses" result-type="dataModel"/>
+	          <evaluate expression="coursesService.loadFourthFCourses()" result="flowScope.fourthfcourses" result-type="dataModel"/>
+	          <evaluate expression="coursesService.loadFourthSCourses()" result="flowScope.fourthscourses" result-type="dataModel"/>
+	    </on-render>
+	   <transition on="tofirstsecond" to="coursesview1"/> 
+	</view-state>
+
+</flow>

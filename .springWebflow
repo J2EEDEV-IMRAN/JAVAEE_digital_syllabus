@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webflow-project-description>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.6.4.201503051146-RELEASE]]></pluginVersion>
+	<configs>
+		<config>
+			<file>src/main/webapp/WEB-INF/flows/main/main-flow.xml</file>
+			<name><![CDATA[courses]]></name>
+		</config>
+		<config>
+			<file>src/main/webapp/WEB-INF/flows/courses/courses-flow.xml</file>
+			<name><![CDATA[Lectures-flow]]></name>
+		</config>
+		<config>
+			<file>src/main/webapp/WEB-INF/flows/lectures/lectures-flow.xml</file>
+			<name><![CDATA[lectures]]></name>
+		</config>
+		<config>
+			<file>src/main/webapp/WEB-INF/flows/labs/labs-flow.xml</file>
+			<name><![CDATA[labs]]></name>
+		</config>
+		<config>
+			<file>src/main/webapp/WEB-INF/flows/coursesview/coursesview-flow.xml</file>
+			<name><![CDATA[coursesview]]></name>
+		</config>
+		<config>
+			<file>src/main/webapp/WEB-INF/flows/coursesoverview/coursesoverview-flow.xml</file>
+			<name><![CDATA[coursesoverview]]></name>
+		</config>
+		<config>
+			<file>src/main/webapp/WEB-INF/flows/courseslecture/courseslecture-flow.xml</file>
+			<name><![CDATA[courseslabexamples]]></name>
+		</config>
+		<config>
+			<file>src/main/webapp/WEB-INF/flows/labexample/labexample-flow.xml</file>
+			<name><![CDATA[labexample]]></name>
+		</config>
+	</configs>
+</webflow-project-description>

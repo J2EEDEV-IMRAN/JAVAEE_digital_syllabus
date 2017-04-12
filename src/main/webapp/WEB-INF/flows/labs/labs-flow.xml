@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+   <var name="lab" class="com.example.j2eeapp.domain.LabExamplesEntity"/>
+   <input name="courseCodes" required="true"/>
+   
+	<view-state id="insertLabs" view="insertLabs.xhtml">
+	  <transition on="showLab" to="viewLabs"/>
+	  
+	  <transition on="confirmLab"  to="viewLabs">
+	      <evaluate expression="labExamplesSerivice.createLabExamples(lab, courseCodes)"/>
+	  </transition> 
+	       
+	  <transition on="InsertionCancell" to="labInsertionCancelled"/>
+	</view-state>
+	
+	<view-state id="viewLabs" view="viewLabExamples.xhtml">
+	
+	    <on-render>
+	          <evaluate expression="labExamplesSerivice.loadAllLabs()" result="flowScope.labs" result-type="dataModel"/>
+	   </on-render>
+	   
+	   <transition on="labEdit" to="editLab">
+	       <set name="flowScope.lab" value="labs.selectedRow"/>
+	   </transition>
+	   
+	   <transition on="labDelete">
+	      <evaluate expression="labExamplesSerivice.deleteLabExample(labs.selectedRow)"/>
+	   </transition>
+	   
+	   <transition on="reviewLab">
+	      <set name="flowScope.reviewThelab" value="labs.selectedRow" />
+	   </transition>
+	   
+	   <transition on="backToInsertLab" to="insertLabs"/>
+	</view-state>
+	
+	<view-state id="editLab" view="editLabExample.xhtml">
+	<transition on="updateLab">
+	 <evaluate expression="labExamplesSerivice.updateLabExample(labs)"/>
+	</transition>   
+	<transition on="backToLab" to="viewLabs"/>  
+	</view-state>
+
+
+     	<end-state id="labInsertionCancelled" />
+</flow>

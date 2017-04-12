@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:c="http://java.sun.com/jsp/jstl/core"
+		template="/WEB-INF/templates/general.xhtml">
+	
+	<ui:define name="title"><h:outputText value="Enter course" /></ui:define>
+	<ui:define name="header"><h:outputText value="Enter Course" />	
+	   <div class="container">
+	   <div class="col-sm-offset-2 col-sm-10">
+	       <h6 class="fa fa-hand-o-right pull-left" style="font-size: 25px;   padding-top: 25px " > Enter a course</h6><br></br>
+	     </div>
+	     <div class="col-sm-offset-2 col-sm-10">
+	       <h6 class="fa fa-hand-o-right pull-left" style="font-size: 25px; " > Fill up all required field</h6>
+	     </div>
+	      <div class="col-sm-offset-2 col-sm-10">
+	       <h6 class="fa fa-hand-o-right pull-left" style="font-size: 25px; " > Click button <strong>View Course</strong> to view inserted courses  </h6>
+	     </div>
+	   </div>
+        
+     </ui:define>
+	
+	<ui:define name="content">
+	  <div class="container">
+            <h:form styleClass="form-horizontal" >
+				<p:focus />
+				<p:messages id="messages"/>
+				
+				 <div class="form-group form-group-lg" style="position:relative" >
+							<h:outputText styleClass="control-label col-sm-2"  value="Course Code:" /><h:outputText styleClass="control-label" value="*" style="position:absolute;margin-right:380px;color: #b32020;font-size: 30px;"/>
+							<div class="col-sm-10 col-md-6">
+							   <p:inputText id="courseCode" styleClass="form-control"  label="Cours Code" value="#{course.courseCode}" required="true" title="Enter course code!" autocomplete="off">
+						            <f:validateLength minimum="2" />
+					           </p:inputText>
+					            <p:watermark for="courseCode" value="Course Code" />
+					             <p:message for="courseCode"  id="message"/>
+						<p:tooltip  for="courseCode" value="Enter course code!"
+               showEffect="clip" hideEffect="explode" />
+							</div>	
+                     </div>
+                     
+                         <div class="form-group form-group-lg" style="position:relative">
+							<h:outputText styleClass="control-label col-sm-2"  value="Course Title:" /><h:outputText styleClass="control-label" value="*" style="position:absolute;margin-right:380px;color: #b32020;font-size: 30px;"/>
+							<div class="col-sm-10 col-md-6">
+							   <p:inputText id="courseTitle" styleClass="form-control"  label="Course Title" value="#{course.courseTitle}" required="true" title="Enter course code!" autocomplete="off" >
+						            <f:validateLength minimum="2" />
+					           </p:inputText>
+					           <p:watermark for="courseTitle" value="Course Title"/>
+					            <p:message for="courseTitle"/>
+								<p:tooltip  for="courseTitle" value="Enter course title!"
+               showEffect="clip" hideEffect="explode" />
+							</div>	
+                     </div>
+                 <!--<div class="form-group form-group-lg" style="position:relative">
+							<h:outputText styleClass="control-label col-sm-2"  value="Course Credit:" /><h:outputText value="*" style="position: absolute;right: 200px;top: 8px;color: #b32020;font-size: 30px;"/>
+							<div class="col-sm-10 col-md-6">
+							   <p:inputText id="courseCredit" styleClass="form-control"  label="Course Credit" value="#{course.courseCredit}" required="true" title="Enter course code!" autocomplete="off" />
+					             <p:watermark for="courseCredit" value="Course Credit"/>
+							  <p:message for="courseCredit"/>
+							<p:tooltip  for="courseCredit" value="Enter course credit!"
+               showEffect="clip" hideEffect="explode" position="left"/>	
+							</div>	
+                     </div>  -->
+                      
+                         <div class="form-group form-group-lg" style="position:relative">
+							<h:outputText styleClass="control-label col-sm-2"  value="Course Reference Book:" /><h:outputText styleClass="control-label" value="*" style="position:absolute;margin-right:380px;color: #b32020;font-size: 30px;"/>
+							<div class="col-sm-10 col-md-6">
+							   <p:inputText id="courseReferenceBook" styleClass="form-control"  label="Course Reference Book" value="#{course.courseReferenceBook}" required="true" title="Enter course code!" autocomplete="off" >
+						            <f:validateLength minimum="2" />
+					           </p:inputText>
+					            <p:watermark for="courseReferenceBook" value="Course Reference Book"/>
+							  <p:message for="courseReferenceBook"/>
+							<p:tooltip  for="courseReferenceBook" value="Enter reference book!"
+               showEffect="clip" hideEffect="explode" />
+							</div>	
+                     </div>
+                     
+                     
+                      <div class="form-group form-group-lg" style="position:relative">
+							<h:outputText styleClass="control-label col-sm-2"  value="Course Type:" /><h:outputText styleClass="control-label" value="*" style="position:absolute;margin-right:380px;color: #b32020;font-size: 30px;"/>
+							<div class="col-sm-10 col-md-6">
+							<h:selectOneMenu class="form-control" id="courseType" value="#{course.courseType}" required="true">
+							        <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
+							        <f:selectItems  value="#{coursetype}"/>
+						    </h:selectOneMenu>
+							  <p:message for="courseType"/>
+							<p:tooltip  for="courseType" value="Enter course type!"
+               showEffect="clip" hideEffect="explode" />	
+							</div>	
+                     </div> 
+                     
+                          <div class="form-group form-group-lg" style="position:relative">
+							<h:outputText styleClass="control-label col-sm-2"  value="Course Credit:" /><h:outputText styleClass="control-label" value="*" style="position:absolute;margin-right:380px;color: #b32020;font-size: 30px;"/>
+							<div class="col-sm-10 col-md-6">
+							<h:selectOneMenu class="form-control" id="courseCredit" value="#{course.courseCredit}" required="true">
+							        <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
+							        <f:selectItems  value="#{credit}"/>
+						    </h:selectOneMenu>
+							  <p:message for="courseCredit"/>
+							<p:tooltip  for="courseCredit" value="Enter course credit!"
+               showEffect="clip" hideEffect="explode" />	
+							</div>	
+                     </div> 
+                     
+                        
+                      <div class="form-group form-group-lg" style="position:relative">
+							<h:outputText styleClass="control-label col-sm-2"  value="Credit Hours:" /><h:outputText styleClass="control-label" value="*" style="position:absolute;margin-right:380px;color: #b32020;font-size: 30px;"/>
+							<div class="col-sm-10 col-md-6">
+							<h:selectOneMenu class="form-control" id="courseCreditHours" value="#{course.courseCreditHours}" required="true">
+							        <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
+							        <f:selectItems  value="#{credithours}"/>
+						    </h:selectOneMenu>
+							  <p:message for="courseCreditHours"/>
+							<p:tooltip  for="courseCreditHours" value="Enter course credit hours!"
+               showEffect="clip" hideEffect="explode" />	
+							</div>	
+                     </div> 
+                     
+                          <div class="form-group form-group-lg" style="position:relative">
+							<h:outputText styleClass="control-label col-sm-2"  value="Year:" /><h:outputText styleClass="control-label" value="*" style="position:absolute;margin-right:380px;color: #b32020;font-size: 30px;"/>
+							<div class="col-sm-10 col-md-6">
+							<h:selectOneMenu class="form-control" id="courseYear" value="#{course.courseYear}" required="true">
+							        <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
+							        <f:selectItems  value="#{courseyears}"/>
+						    </h:selectOneMenu>
+							  <p:message for="courseYear"/>
+							<p:tooltip  for="courseYear" value="Enter year of course!"
+               showEffect="clip" hideEffect="explode" />	
+							</div>	
+                     </div> 
+                     
+                            <div class="form-group form-group-lg" style="position:relative">
+							<h:outputText styleClass="control-label col-sm-2"  value="Term:" /><h:outputText styleClass="control-label" value="*" style="position:absolute;margin-right:380px;color: #b32020;font-size: 30px;"/>
+							<div class="col-sm-10 col-md-6">
+							<h:selectOneMenu class="form-control" id="courseTerm" value="#{course.courseTerm}" required="true">
+							        <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
+							        <f:selectItems  value="#{courseterms}"/>
+						    </h:selectOneMenu>
+							  <p:message for="courseTerm"/>
+							<p:tooltip  for="courseTerm" value="Enter term of course!"
+               showEffect="clip" hideEffect="explode" />	
+							</div>	
+                     </div> 
+                     
+                     
+                      <div class="form-group form-group-lg" >
+							<h:outputText styleClass="control-label col-sm-2"  value="Course Overview:" /><h:outputText styleClass="control-label" value="*" style="position:absolute;margin-right:380px;color: #b32020;font-size: 30px;"/>
+							<div class="col-sm-10 col-md-6">
+							 <p:inputTextarea id="courseOverview"  styleClass="form-control" value="#{course.courseOverview}" required="true"  autocomplete="off" autoResize="false" />
+					          <p:watermark for="courseOverview" value="Course Overview"/>
+					            <p:message for="courseOverview"/>
+							<p:tooltip  for="courseOverview" value="Enter course Overview!"
+               showEffect="clip" hideEffect="explode" />
+							</div>	
+                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                             <p:commandButton id="submitCourse" styleClass="btn btn-primary" action="confirmCourse" update="messages,message"  value="Save" />
+                              <p:commandButton id="showCourseButton" styleClass="btn btn-primary" action="showCourse" immediate="true" icon="fa fa-mail-reply" value="View Course" />
+                        </div>
+                      </div>
+                   
+		</h:form>
+	  </div>
+	</ui:define>
+	
+</ui:composition>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		xmlns:c="http://java.sun.com/jsp/jstl/core"
+		template="/WEB-INF/templates/general.xhtml">
+	
+	<ui:define name="title"><h:outputText value="Enter Course Lecture Details" /></ui:define>
+	<ui:define name="header"><h:outputText value="Enter Course Lecture Details" />
+	<div class="container">
+	   <div class="col-sm-offset-2 col-sm-10">
+	       <h6 class="fa fa-hand-o-right pull-left" style="font-size: 25px;   padding-top: 25px " > Enter all lectures details</h6><br></br>
+	     </div>
+	     <div class="col-sm-offset-2 col-sm-10">
+	       <h6 class="fa fa-hand-o-right pull-left" style="font-size: 25px; " > Fill up all required field</h6>
+	     </div>
+	      <div class="col-sm-offset-2 col-sm-10">
+	       <h6 class="fa fa-hand-o-right pull-left" style="font-size: 25px; " > Click button <strong>View Lectures</strong> to view inserted lectures </h6>
+	     </div>
+	     <div class="col-sm-offset-2 col-sm-10">
+	       <h6 class="fa fa-hand-o-right pull-left" style="font-size: 25px; " > Click button <strong>Cancel Insertion</strong> to go back courses view page </h6>
+	     </div>
+	   </div>
+	</ui:define>
+	
+	<ui:define name="content">
+	  <div class="container">
+            <h:form styleClass="form-horizontal" >
+            
+				<p:focus />
+				<p:messages id="messages"/>
+				               
+                         <div class="form-group form-group-lg" style="position:relative">
+							<h:outputText styleClass="control-label col-sm-2"  value="Lecture Topic Name:" /><h:outputText styleClass="control-label" value="*" style="position:absolute;margin-right:380px;color: #b32020;font-size: 30px;"/>
+							<div class="col-sm-10 col-md-6">
+							   <p:inputTextarea id="lectureTopicName" autoResize="false" styleClass="form-control"  label="lecture Topic Name" value="#{lecture.lectureTopicName}" required="true" title="Enter lecture topic name!" autocomplete="off" >
+						            <f:validateLength minimum="8" />
+					           </p:inputTextarea>
+					           <p:watermark for="lectureTopicName" value="lecture Topic Name"/>
+							  <p:message for="lectureTopicName"/>
+							<p:tooltip  for="lectureTopicName" value="Enter lecture Topic Name!"
+               showEffect="clip" hideEffect="explode" />
+							</div>	
+                     </div>
+                     
+                      <div class="form-group form-group-lg" style="position:relative">
+							<h:outputText styleClass="control-label col-sm-2"  value="Lecture Number:" /><h:outputText styleClass="control-label" value="*" style="position:absolute;margin-right:380px;color: #b32020;font-size: 30px;"/>
+							<div class="col-sm-10 col-md-6">
+							<h:selectOneMenu class="form-control" id="lectureNumber" value="#{lecture.lectuerNumber}" required="true">
+							        <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
+							        <f:selectItems  value="#{lecturenumber}"/>
+						    </h:selectOneMenu>
+							  <p:message for="lectureNumber"/>
+							<p:tooltip  for="lectureNumber" value="Enter lectue number!"
+               showEffect="clip" hideEffect="explode" />	
+							</div>	
+                     </div> 
+                     
+                     <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                             <p:commandButton id="submitLecture" styleClass="btn btn-primary" action="confirmLecture" update="messages"  value="Save" />
+                             <p:commandButton id="showLectureButton" styleClass="btn btn-primary" action="showLecture" immediate="true" icon="ui-icon-arrowreturnthick-1-w" value="View Lectures" />
+                             <p:commandButton id="InsertionCancellButton" styleClass="btn btn-primary" action="InsertionCancell" immediate="true" icon="ui-icon-arrowreturnthick-1-w" value="Cancel Insertion"/>
+                        </div>
+                      </div>
+                   
+		</h:form>
+	  </div>
+	</ui:define>
+	
+</ui:composition>

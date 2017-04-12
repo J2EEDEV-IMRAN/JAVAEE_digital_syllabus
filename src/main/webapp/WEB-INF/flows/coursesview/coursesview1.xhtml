@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:c="http://java.sun.com/jsp/jstl/core"
+		xmlns:p="http://primefaces.org/ui"
+		template="/WEB-INF/templates/general.xhtml">
+	
+	<ui:define name="title"><h:outputText value="Courses" /></ui:define>
+	<ui:define name="header"><h:outputText value="Courses" /></ui:define>
+	
+	<ui:define name="content">
+	
+	<div class="container">
+	
+	      <h:form>
+               <div class="container">
+                  <p:dataTable id="coursesff" value="#{firstfcourses}" var="cff" styleClass="main-table text-center table table-responsive" >
+	          
+	              <p:column styleClass="header" headerText="Code">
+	                   <h:outputText value="#{cff.courseCode}"/> 
+	              </p:column>
+	             
+	               <p:column styleClass="header" headerText="Title">
+	                   <h:outputText value="#{cff.courseTitle}"/> 
+	              </p:column>
+	             
+	               <p:column styleClass="header" headerText="Credit">
+	                   <h:outputText value="#{cff.courseCredit}"/> 
+	              </p:column>       
+	                 <p:column styleClass="header" headerText="Credit">
+	                   <h:outputText value="#{cff.courseCreditHours}"/> 
+	              </p:column>  
+	              </p:dataTable>     
+              </div>
+              
+              <div class="container">
+                  <p:dataTable id="coursesfs" value="#{firstscourses}" var="cfs" styleClass="main-table text-center table table-responsive" >
+	          
+	              <p:column styleClass="header" headerText="Code">
+	                   <h:outputText value="#{cfs.courseCode}"/> 
+	              </p:column>
+	             
+	               <p:column styleClass="header" headerText="Title">
+	                   <h:outputText value="#{cfs.courseTitle}"/> 
+	              </p:column>
+	             
+	               <p:column styleClass="header" headerText="Credit">
+	                   <h:outputText value="#{cfs.courseCredit}"/> 
+	              </p:column>       
+	                 <p:column styleClass="header" headerText="Credit">
+	                   <h:outputText value="#{cfs.courseCreditHours}"/> 
+	              </p:column>  
+	              </p:dataTable>     
+              </div>
+              
+              <div class="container">
+                  <p:dataTable id="coursessf" value="#{secondfcourses}" var="csf" styleClass="main-table text-center table table-responsive" >
+	          
+	              <p:column styleClass="header" headerText="Code">
+	                   <h:outputText value="#{csf.courseCode}"/> 
+	              </p:column>
+	             
+	               <p:column styleClass="header" headerText="Title">
+	                   <h:outputText value="#{csf.courseTitle}"/> 
+	              </p:column>
+	             
+	               <p:column styleClass="header" headerText="Credit">
+	                   <h:outputText value="#{csf.courseCredit}"/> 
+	              </p:column>       
+	                 <p:column styleClass="header" headerText="Credit">
+	                   <h:outputText value="#{csf.courseCreditHours}"/> 
+	              </p:column>  
+	              </p:dataTable>     
+              </div>
+              
+              <div class="container">
+                  <p:dataTable id="coursesss" value="#{secondscourses}" var="cfs" styleClass="main-table text-center table table-responsive" >
+	          
+	              <p:column styleClass="header" headerText="Code">
+	                   <h:outputText value="#{cfs.courseCode}"/> 
+	              </p:column>
+	             
+	               <p:column styleClass="header" headerText="Title">
+	                   <h:outputText value="#{cfs.courseTitle}"/> 
+	              </p:column>
+	             
+	               <p:column styleClass="header" headerText="Credit">
+	                   <h:outputText value="#{cfs.courseCredit}"/> 
+	              </p:column>       
+	                 <p:column styleClass="header" headerText="Credit">
+	                   <h:outputText value="#{cfs.courseCreditHours}"/> 
+	              </p:column>  
+	              </p:dataTable>     
+              </div>
+	         <p:commandButton id="thirdfourth" styleClass="btn btn-primary" style="float: right" action="tothirdfourth" immediate="true" icon="fa fa-chevron-circle-right" value="Next" />
+	    </h:form>
+	</div>
+	
+	
+	</ui:define>
+	</ui:composition>

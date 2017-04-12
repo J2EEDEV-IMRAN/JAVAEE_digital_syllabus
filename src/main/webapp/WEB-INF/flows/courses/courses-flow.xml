@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+    
+    <var name="course" class="com.example.j2eeapp.domain.CoursesEntity"/>
+    
+    
+     <on-start>
+         <evaluate expression="coursesService.loadCredits()" result="flowScope.credit"/>
+         <evaluate expression="coursesService.loadcourseTypes()" result="flowScope.coursetype"/>
+         <evaluate expression="coursesService.loadCourseCreditHours()" result="flowScope.credithours"/>
+          <evaluate expression="coursesService.loadCourseYear()" result="flowScope.courseyears"/>
+         <evaluate expression="coursesService.loadCourseTerm()" result="flowScope.courseterms"/>
+    </on-start> 
+        
+	<view-state id="insertCourses" view="insertCourses.xhtml">
+	<secured attributes="ROLE_USER"/>
+	<transition on="showCourse" to="viewCourses"/>
+	        <transition on="confirmCourse" to="viewCourses">
+	            <evaluate expression="coursesService.createCourse(course, currentUser.name)"/>
+	        </transition>
+	</view-state>
+	
+	<view-state id="viewCourses" view="viewCourses.xhtml">
+	      <on-render>
+	          <evaluate expression="coursesService.loadAllCourses()" result="flowScope.courses" result-type="dataModel"/>
+	      </on-render>
+	      <transition on="backToInsertCourse"  to="insertCourses"/>
+	      <transition on="delete">
+	           <evaluate expression="coursesService.delteCourse(courses.selectedRow)" />
+	      </transition>
+	      <transition on="edit" to="editCourses">
+			<set name="flowScope.course" value="courses.selectedRow"/>
+		  </transition>
+		  <transition on="reviewCourse" to="showCourse">
+		       <set name="flowScope.course" value="courses.selectedRow"/>
+		  </transition>
+	</view-state>
+	
+	<view-state id="editCourses" view="editCourses.xhtml">
+	   	<transition on="eBackToViewCourse" to="viewCourses"/>
+	   	<transition on="update" to="viewCourses">
+	            <evaluate expression="coursesService.updateCourse(course)"/>
+	        </transition>
+	</view-state>
+	
+	<view-state id="showCourse" view="reviewCourse.xhtml">
+	      <transition on="insertLectureDetails" to="insertLecture"/>
+	      <transition on="insertLabDetails" to="insertLab"/>
+	      <transition on="backToViewCourse" to="viewCourses"/>
+	</view-state>
+	
+	<subflow-state id="insertLecture" subflow="lectures">
+         <input name="courseCodes" value="course.courseCode"/>
+         <transition on="lectureInsertionCancelled" to="viewCourses"/>
+	</subflow-state>
+	
+	<subflow-state id="insertLab" subflow="labs">
+         <input name="courseCodes" value="course.courseCode"/>
+         <transition on="labInsertionCancelled" to="viewCourses"/>
+	</subflow-state>
+	
+	<end-state id="finish"/>
+
+</flow>

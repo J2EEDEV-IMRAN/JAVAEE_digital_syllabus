@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+    http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+ <var name="lecture" class="com.example.j2eeapp.domain.LecturesEntity"/><!-- this must declare before all other elements -->
+ <input name="courseCodes" required="true"/>
+  
+     <on-start>
+         <evaluate expression="lecturesSerivice.loadLectureNumber()" result="flowScope.lecturenumber" />
+     </on-start>
+
+	<view-state id="insertLectures" view="insertLectures.xhtml">
+	    <transition on="showLecture" to="viewLectures"/>
+	    <transition on="confirmLecture" to="viewLectures">
+	          <evaluate expression="lecturesSerivice.createLecture(lecture,courseCodes)"/>
+	    </transition>
+	    <transition on="InsertionCancell" to="lectureInsertionCancelled"/>
+	</view-state>
+	
+	<view-state id="viewLectures" view="viewLectures.xhtml">
+	   <on-render>
+	          <evaluate expression="lecturesSerivice.loadAllLectures()" result="flowScope.lectures" result-type="dataModel"/>
+	   </on-render>
+	   
+	   <transition on="lectureEdit" to="editLecture">
+	          <set name="flowScope.lecture" value="lectures.selectedRow"/>
+	   </transition>
+	   
+	   <transition on="reviewlecture">
+	      <set name="flowScope.reviewlecture" value="lectures.selectedRow"/>
+	   </transition>
+	   
+	   <transition on="lectureDelete">
+	      <evaluate expression="lecturesSerivice.deleteLcture(lectures.selectedRow)"/>
+	   </transition> 
+	   <transition on="backToInsertLectue" to="insertLectures"/>
+	</view-state>
+	
+	<view-state id="editLecture" view="editLecture.xhtml">
+	   <transition on="backToLecture" to="viewLectures"/>
+	   <transition on="updateLecture" to="viewLectures">
+	      <evaluate expression="lecturesSerivice.updateLecture(lecture)"/>
+	   </transition>
+	</view-state>
+	
+	<end-state id="lectureInsertionCancelled" />
+
+</flow>

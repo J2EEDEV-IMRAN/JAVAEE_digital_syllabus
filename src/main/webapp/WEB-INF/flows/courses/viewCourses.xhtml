@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:p="http://primefaces.org/ui"
+		template="/WEB-INF/templates/general.xhtml">
+	
+	<ui:define name="title"><h:outputText value="View course" /></ui:define>
+	<ui:define name="header"><h:outputText value="View Course" />
+	<div class="container">
+	   <div class="col-sm-offset-2 col-sm-10">
+	       <h6 class="fa fa-hand-o-right pull-left" style="font-size: 25px;   padding-top: 25px " > Click button <strong>Edit</strong>to Edit course</h6><br></br>
+	     </div>
+	     <div class="col-sm-offset-2 col-sm-10">
+	       <h6 class="fa fa-hand-o-right pull-left" style="font-size: 25px; " >  Click button<strong>Delete</strong> to delete course</h6>
+	     </div>
+	      <div class="col-sm-offset-2 col-sm-10">
+	       <h6 class="fa fa-hand-o-right pull-left" style="font-size: 25px; " >
+	        Click button <strong>Review</strong> to review course details </h6>
+	     </div>
+	       <div class="col-sm-offset-2 col-sm-10">
+	       <h6 class="fa fa-hand-o-right pull-left" style="font-size: 25px; " >
+	        Click button <strong>Back to Insert Course</strong>to go back into insert course page </h6>
+	     </div>
+	   </div>
+	</ui:define>
+	
+	<ui:define name="content">
+	
+	<div class="container">
+	
+	      <h:form>
+               <p:dataTable id="courses" value="#{courses}" var="c" styleClass="main-table text-center table table-responsive table-bordered" >
+	          
+	              <p:column headerText="Code">
+	                   <h:outputText value="#{c.courseCode}"/> 
+	              </p:column>
+	             
+	               <p:column headerText="Title">
+	                   <h:outputText value="#{c.courseTitle}"/> 
+	              </p:column>
+	             
+	               <p:column headerText="Credit">
+	                   <h:outputText value="#{c.courseCredit}"/> 
+	              </p:column>
+	              
+	               <p:column headerText="Type">
+	                   <h:outputText value="#{c.courseType}"/> 
+	              </p:column>
+	              
+	                <p:column headerText="ReferenceBook">
+	                   <h:outputText value="#{c.courseReferenceBook}"/> 
+	              </p:column>
+	              
+	              <p:column headerText="Action">
+	              
+	                  <p:commandButton styleClass="btn btn-success btn-xs" action="edit" icon="ui ui-icon-pencil"/>
+	                 
+	                  <p:commandButton styleClass="btn btn-danger btn-xs" action="delete" icon="ui ui-icon-trash" update="courses"/>
+	                  
+	                  <p:commandButton styleClass="btn btn-info btn-xs" action="reviewCourse" immediate="true" icon="ui ui-icon-search"/>
+	                 
+	              </p:column>
+	           
+	         </p:dataTable>
+	         <p:commandButton id="backToInsertCourse" styleClass="btn btn-primary" action="backToInsertCourse" immediate="true" icon="fa fa-mail-reply" value="Back to Insert Course"/>
+	    </h:form>
+	</div>
+	
+	
+	</ui:define>
+	</ui:composition>
