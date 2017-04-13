@@ -24,7 +24,7 @@
             <h:form styleClass="form-horizontal" >
             
 				<p:focus />
-				<p:messages id="messages"/>
+				<p:messages id="messages" globalOnly="true"/>
 				
 				 <div class="form-group form-group-lg" style="position:relative" >
 							<h:outputText styleClass="control-label col-sm-2"  value="Example Name:" /><h:outputText styleClass="control-label" value="*" style="position:absolute;margin-right:380px;color: #b32020;font-size: 30px;"/>
@@ -33,7 +33,7 @@
 						            <f:validateLength minimum="8" />
 					           </p:inputTextarea>
 					            <p:watermark for="labExampleName" value="Lab Example Name" />
-					             <p:message for="labExampleName"  id="message"/>
+					             <p:message for="labExampleName"  id="enMsg"/>
 						<p:tooltip  for="labExampleName" value="Enter lab example name!"
                showEffect="clip" hideEffect="explode" />
 							</div>	
@@ -44,7 +44,7 @@
 							<div class="col-sm-10 col-md-6">
 							 <p:inputTextarea id="labExampleSolution" styleClass="form-control" autoResize="false"   value="#{lab.labExampleSolution}" required="true"  autocomplete="off" />
 					          <p:watermark for="labExampleSolution" value="Lab Solution"/>
-					            <p:message for="labExampleSolution"/>
+					            <p:message for="labExampleSolution" id="sMsg"/>
 							<p:tooltip  for="labExampleSolution" value="Enter Lab Solution!"
                showEffect="clip" hideEffect="explode" />
 							</div>	
@@ -55,14 +55,14 @@
 							<div class="col-sm-10 col-md-6">
 							 <p:inputTextarea id="labExampleSampleAnswer" styleClass="form-control"  autoResize="false"  value="#{lab.labExampleSampleAnswer}" required="true"  autocomplete="off" />
 					          <p:watermark for="labExampleSampleAnswer" value="Lab Sample Answer"/>
-					            <p:message for="labExampleSampleAnswer"/>
+					            <p:message for="labExampleSampleAnswer" id="saMsg"/>
 							<p:tooltip  for="labExampleSampleAnswer" value="Enter Sample Answer!"
                showEffect="clip" hideEffect="explode" />
 							</div>	
                      </div>
                      <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                             <p:commandButton id="submitLab" styleClass="btn btn-primary" action="confirmLab" update="messages"  value="Save" />
+                             <p:commandButton id="submitLab" styleClass="btn btn-primary" action="confirmLab" update="messages,enMsg,sMsg,saMsg"  value="Save" />
                              <p:commandButton id="showLabButton" styleClass="btn btn-primary" action="showLab" immediate="true" icon="ui-icon-arrowreturnthick-1-w" value="View Labs" />
                              <p:commandButton id="labInsertionCancellButton" styleClass="btn btn-primary" action="InsertionCancell" immediate="true" icon="ui-icon-arrowreturnthick-1-w" value="Cancell Insertion"/>
                         </div>
