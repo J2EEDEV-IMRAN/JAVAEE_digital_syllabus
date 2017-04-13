@@ -30,7 +30,7 @@
             <h:form styleClass="form-horizontal" >
             
 				<p:focus />
-				<p:messages id="messages"/>
+				<p:messages id="messages" globalOnly="true"/>
 				               
                          <div class="form-group form-group-lg" style="position:relative">
 							<h:outputText styleClass="control-label col-sm-2"  value="Lecture Topic Name:" /><h:outputText styleClass="control-label" value="*" style="position:absolute;margin-right:380px;color: #b32020;font-size: 30px;"/>
@@ -39,7 +39,7 @@
 						            <f:validateLength minimum="8" />
 					           </p:inputTextarea>
 					           <p:watermark for="lectureTopicName" value="lecture Topic Name"/>
-							  <p:message for="lectureTopicName"/>
+							  <p:message for="lectureTopicName" id="ltMsg"/>
 							<p:tooltip  for="lectureTopicName" value="Enter lecture Topic Name!"
                showEffect="clip" hideEffect="explode" />
 							</div>	
@@ -52,7 +52,7 @@
 							        <f:selectItem itemLabel="Select One" itemValue="" noSelectionOption="true" />
 							        <f:selectItems  value="#{lecturenumber}"/>
 						    </h:selectOneMenu>
-							  <p:message for="lectureNumber"/>
+							  <p:message for="lectureNumber" id="lnMsg"/>
 							<p:tooltip  for="lectureNumber" value="Enter lectue number!"
                showEffect="clip" hideEffect="explode" />	
 							</div>	
@@ -60,7 +60,7 @@
                      
                      <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                             <p:commandButton id="submitLecture" styleClass="btn btn-primary" action="confirmLecture" update="messages"  value="Save" />
+                             <p:commandButton id="submitLecture" styleClass="btn btn-primary" action="confirmLecture" update="messages,ltMsg,lnMsg"  value="Save" />
                              <p:commandButton id="showLectureButton" styleClass="btn btn-primary" action="showLecture" immediate="true" icon="ui-icon-arrowreturnthick-1-w" value="View Lectures" />
                              <p:commandButton id="InsertionCancellButton" styleClass="btn btn-primary" action="InsertionCancell" immediate="true" icon="ui-icon-arrowreturnthick-1-w" value="Cancel Insertion"/>
                         </div>
