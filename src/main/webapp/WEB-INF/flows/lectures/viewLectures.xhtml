@@ -46,20 +46,20 @@
 	              
 	                  <p:commandButton styleClass="btn btn-success btn-xs" action="lectureEdit" icon="ui ui-icon-pencil"/>
 	                 
-	                  <p:commandButton styleClass="btn btn-danger btn-xs" action="lectureDelete" icon="ui ui-icon-trash" update="lectures"/>
+	     <!--             <p:commandButton styleClass="btn btn-danger btn-xs" action="lectureDelete" icon="ui ui-icon-trash" update="lectures"/>
 	                  
 	                  <p:commandButton styleClass="btn btn-info btn-xs" id="reviewlecture" action="reviewlecture"  type="button" icon="ui ui-icon-search" onclick="dlg1.show();"/>
-	                 
+	      -->           
 	              </p:column>
             
             </p:dataTable>
             
-            <p:dialog header="Basic Dialog" widgetVar="dlg1" minHeight="40">
+           <!-- <p:dialog header="Basic Dialog" widgetVar="dlg1" minHeight="40">
                 <ul>
 			         <li><span>Topic Name:</span>#{reviewlecture.lectureTopicName}</li>
 			         <li><span>Lecture Number:</span>#{reviewlecture.lectuerNumber}</li>
 			       </ul>
-            </p:dialog>
+            </p:dialog> -->
             
             <p:commandButton id="backToInsertLectue" styleClass="btn btn-primary" immediate="true" action="backToInsertLectue" icon="fa fa-mail-reply"  value="Back To Insert Lecture"/>
                    
